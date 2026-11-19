@@ -44,7 +44,6 @@ const storeSession = (() => {
       return false;
     }
     document.getElementById("accountEmail").textContent = "Signed in as " + account.email;
-    if (!account.admin) document.querySelector('a[href="admin.html"]')?.setAttribute("hidden", "");
     document.getElementById("signOutBtn").onclick = async () => {
       const { error } = await sdk.auth.signOut({ scope: "local" });
       if (error) return toast(error.message);

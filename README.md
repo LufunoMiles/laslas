@@ -39,6 +39,8 @@ npm start
 
 Fill in `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in `.env` before opening [http://localhost:3000](http://localhost:3000). Set `SUPABASE_SECRET_KEY` and `APP_ORIGIN` to enable admin invitations. The secret belongs in the server environment.
 
+Open [http://localhost:3000/admin.html](http://localhost:3000/admin.html) directly for the admin dashboard. On Vercel, use `/admin.html` on the deployed domain. The dashboard requires a signed-in account with admin access.
+
 ```powershell
 npm test
 npm run build
