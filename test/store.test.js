@@ -75,6 +75,9 @@ test("serves storefront assets and checks Supabase user and admin access in Expr
   const base = "http://127.0.0.1:" + server.address().port;
   const user = { Authorization: "Bearer user", "Content-Type": "application/json" };
   assert.equal((await fetch(base + "/")).status, 200);
+  assert.equal((await fetch(base + "/index.html")).status, 200);
+  assert.equal((await fetch(base + "/auth.html")).status, 200);
+  assert.equal((await fetch(base + "/admin.html")).status, 200);
   assert.equal((await fetch(base + "/assets/css/styles.css")).status, 200);
   assert.equal((await fetch(base + "/vendor/supabase.js")).status, 200);
   const config = await fetch(base + "/api/config");

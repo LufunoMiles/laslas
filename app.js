@@ -1,13 +1,11 @@
 ﻿import express from "express";
 import multer from "multer";
 import { createClient } from "@supabase/supabase-js";
-import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
 import { productInput, orderInput, importProducts, HttpError } from "./server/validation.js";
 
-const require = createRequire(import.meta.url);
 const root = dirname(fileURLToPath(import.meta.url));
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 2 * 1024 * 1024, files: 1, fields: 0 } });
 
@@ -110,13 +108,23 @@ export function createApp(env = process.env, connect = createClient) {
   });
   app.use("/api", (req, res) => res.status(404).json({ error: "API route not found." }));
 
-  for (const [route, page] of [["/", "index.html"], ["/index.html", "index.html"], ["/admin.html", "admin.html"], ["/auth.html", "auth.html"]]) {
-    app.get(route, (req, res) => res.sendFile(join(root, page)));
-  }
+  // Explicit file references let the Vercel function tracer include these pages.
+  app.get(["/", "/index.html"], async (req, res) => {
+    const page = await readFile(new URL("./index.html", import.meta.url));
+    res.type("html").send(page);
+  });
+  app.get("/admin.html", async (req, res) => {
+    const page = await readFile(new URL("./admin.html", import.meta.url));
+    res.type("html").send(page);
+  });
+  app.get("/auth.html", async (req, res) => {
+    const page = await readFile(new URL("./auth.html", import.meta.url));
+    res.type("html").send(page);
+  });
   app.use("/assets", express.static(join(root, "assets")));
   app.get("/vendor/supabase.js", async (req, res) => {
-    const sdk = require.resolve("@supabase/supabase-js/package.json");
-    res.type("js").send(await readFile(join(dirname(sdk), "dist", "umd", "supabase.js")));
+    const sdk = await readFile(new URL("./node_modules/@supabase/supabase-js/dist/umd/supabase.js", import.meta.url));
+    res.type("js").send(sdk);
   });
   app.use((error, req, res, next) => {
     if (res.headersSent) return next(error);
