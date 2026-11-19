@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>LASLAS 24 | Account Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<section class="auth-screen" id="authScreen" aria-label="LASLAS 24 account access">
+  <aside class="auth-brand-panel">
+    <div class="auth-brand-top"><img class="auth-logo" src="assets/images/logo.png" alt="LASLAS 24 — Home of Premium Chickens"></div>
+    <div class="auth-welcome">Welcome to LASLAS 24</div>
+    <div class="auth-showcase">
+      <h2>Your local store, online.</h2>
+      <p>Shop everyday essentials, manage your basket and enjoy a simpler neighbourhood shopping experience.</p>
+      <div class="auth-showcase-art"><i class="fa-solid fa-drumstick-bite"></i></div>
+      <strong style="font-size:13px">Shop · Save · Smile</strong>
+    </div>
+    <div class="auth-dots"><i></i><i></i><i></i></div>
+  </aside>
+  <main class="auth-main">
+    <div class="auth-topline" id="authTopline"><span id="authPrompt">Already have an account?</span> <button type="button" id="authModeToggle">Sign in</button></div>
+    <form class="auth-form-wrap" id="authForm">
+      <h1 id="authTitle">Create your account</h1>
+      <p id="authSubtitle">Enter your email and choose a password.</p>
+      <div class="auth-email-wrap" id="authEmailField">
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <div class="auth-email-wrap" id="authPasswordField">
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" autocomplete="new-password" minlength="8" required>
+      </div>
+      <div class="auth-error" id="authError" role="status"></div>
+      <button class="auth-submit" type="submit" id="authSubmit" disabled>Create account</button>
+      <div class="auth-topline auth-links">
+        <button type="button" id="authRecovery">Forgot password?</button>
+        <button type="button" id="authBack" hidden>Back to sign in</button>
+      </div>
+    </form>
+  </main>
+</section>
+<script defer src="assets/js/storage.js"></script>
+<script defer src="/vendor/supabase.js"></script>
+<script defer src="assets/js/session.js"></script>
+<script defer src="assets/js/auth.js"></script>
+</body>
+</html>

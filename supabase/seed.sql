@@ -1,0 +1,15 @@
+insert into public.products (name, category, price, stock, icon) values
+  ('Chicken Braai Pack', 'Chicken', 89.99, 14, 'fa-drumstick-bite'),
+  ('Chicken Wings 1kg', 'Chicken', 65.50, 22, 'fa-drumstick-bite'),
+  ('Full Chicken (Frozen)', 'Chicken', 79.90, 9, 'fa-drumstick-bite'),
+  ('White Bread', 'Bakery', 16.99, 32, 'fa-bread-slice'),
+  ('Brown Bread', 'Bakery', 17.50, 25, 'fa-bread-slice'),
+  ('Amasi 2L', 'Dairy', 34.99, 12, 'fa-cow'),
+  ('Milk 2L', 'Dairy', 29.99, 18, 'fa-bottle-water'),
+  ('Coca-Cola 2L', 'Beverages', 21.99, 30, 'fa-bottle-water'),
+  ('Maize Meal 5kg', 'Staples', 54.90, 17, 'fa-wheat-awn'),
+  ('Rice 2kg', 'Staples', 38.50, 20, 'fa-wheat-awn'),
+  ('Cooking Oil 1L', 'Staples', 32.99, 8, 'fa-bottle-droplet'),
+  ('Eggs (6 pack)', 'Dairy', 22.50, 40, 'fa-egg'),
+  ('Potato Chips', 'Snacks', 12.99, 50, 'fa-cookie-bite'),
+  ('Chocolate Bar', 'Snacks', 9.99, 45, 'fa-box');
