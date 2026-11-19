@@ -19,7 +19,11 @@ The storefront records orders and the customer's payment method for collection. 
 
 ## Set up Supabase
 
-1. Create a Supabase project and apply the SQL in `supabase/migrations/20261119000100_store.sql` with your migration workflow. You may also run `supabase/seed.sql` once to load the sample inventory.
+For local development with Docker running, use `supabase start` from the repository root. The checked-in CLI config enables the store migration and local Auth callbacks. Use the local API URL and publishable key in your ignored `.env` file. A new catalogue starts empty. Use **Add product** in the admin dashboard to populate it.
+
+For a hosted Supabase project, use the steps below.
+
+1. Create a Supabase project and apply the SQL in `supabase/migrations/20261119000100_store.sql` with your migration workflow.
 2. Enable email/password authentication. Set **Site URL** to your deployed origin and allow the account callbacks at `http://localhost:3000/auth.html` and your deployed `/auth.html`. Configure a custom SMTP provider in Supabase Auth for production signup, invitation, and recovery emails.
 3. Create and confirm the first account. Run the SQL below as the project owner with that user's UUID from the Supabase Auth dashboard. Invitation recipients start as regular customers.
 
@@ -64,5 +68,5 @@ Import the repository into a Vercel project. The checked-in `vercel.json` select
 - `assets/` contains shared styles, images, and frontend JavaScript.
 - `app.js` defines the Express application. `start.js` starts the local server.
 - `server/` contains validation and spreadsheet handling.
-- `supabase/` contains the SQL migration and optional sample data.
+- `supabase/` contains the SQL migration and local CLI configuration.
 - `test/` contains input validation and API tests.

@@ -631,17 +631,27 @@ tr:last-child td {
 /* Email-only account access screen */
 .auth-screen{position:fixed;inset:0;z-index:200;background:#fff;display:grid;grid-template-columns:minmax(330px,34%) 1fr;min-height:100vh}
 
-.auth-brand-panel{background:#ed1c24;position:relative;overflow:hidden;padding:38px 34px;display:flex;flex-direction:column}
-.auth-brand-top{font:800 25px Manrope,sans-serif;letter-spacing:-1px;color:#171717}
-.auth-brand-top span{display:inline-grid;place-items:center;width:42px;height:42px;border:2px solid #171717;border-radius:14px;margin-right:10px}
-.auth-welcome{font-size:16px;font-weight:700;margin-top:30px;color:#171717}
-.auth-showcase{position:relative;z-index:1;background:#fff;border-radius:26px;padding:28px 24px;margin:auto 0;min-height:390px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 15px 35px #00000022}
-.auth-showcase h2{font:800 23px Manrope;margin:0 0 8px}
-.auth-showcase p{color:#626262;font-size:14px;line-height:1.55;max-width:245px;margin:0}
-.auth-showcase-art{width:190px;height:150px;margin:25px auto 10px;border-radius:22px;background:#315b3e;display:grid;place-items:center;color:#ed1c24;font-size:68px;position:relative}
-.auth-showcase-art:after{content:"LASLAS 24";position:absolute;bottom:12px;color:white;font:800 12px Manrope;letter-spacing:1px}
-.auth-dots{display:flex;gap:7px;justify-content:center;margin-top:24px}
-.auth-dots i{width:7px;height:7px;border-radius:50%;background:#ed1c24}
+.auth-brand-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 48px);
+  background: #080808;
+  color: white;
+  text-align: center;
+}
+.auth-logo {
+  display: block;
+  width: min(270px, 100%);
+  height: auto;
+  object-fit: contain;
+}
+.auth-welcome {
+  margin: 0;
+  font: 800 clamp(18px, 2.5vw, 28px) Manrope, sans-serif;
+}
 .auth-main{display:flex;flex-direction:column;min-width:0;padding:30px clamp(22px,5vw,70px)}
 .auth-topline{text-align:right;font-size:14px;color:#333}
 .auth-topline button{border:0;background:none;text-decoration:underline;color:#111;padding:0;font-weight:700}
@@ -674,23 +684,15 @@ tr:last-child td {
   white-space: nowrap;
 }
 .signout-btn{border:1px solid #ffffff45;background:#ffffff12;color:white;border-radius:22px;padding:9px 11px;font-size:11px;font-weight:700}
-@media(max-width:760px){.auth-screen{grid-template-columns:1fr}.auth-brand-panel{display:none}.auth-main{min-height:100vh;padding:22px}.auth-topline{font-size:12px}.auth-form-wrap{margin:auto}.auth-form-wrap h1{font-size:29px}}
+@media(max-width:760px){.auth-screen{grid-template-columns:1fr}.auth-main{min-height:100vh;padding:22px}.auth-topline{font-size:12px}.auth-form-wrap{margin:auto}.auth-form-wrap h1{font-size:29px}}
 
 
 /* LASLAS 24 identity: black, signature red and white */
 .site-logo{display:block;width:190px;height:auto;max-height:62px;object-fit:contain}
-.auth-brand-panel{background:#080808}
-.auth-brand-top{color:#fff}
-.auth-brand-top .auth-logo{display:block;width:min(270px,100%);height:auto;object-fit:contain}
-.auth-welcome{color:#fff}
-.auth-showcase-art{background:#171717;color:#ed1c24}
-.auth-showcase-art:after{color:#fff}
-.auth-dots i{background:#ed1c24}
 .auth-submit{background:#ed1c24;color:#fff}
 .auth-submit:hover{background:#c9141d}
 .auth-email-wrap input:focus{border-color:#ed1c24;box-shadow:0 0 0 4px #ed1c2422}
 .auth-email-check{color:#ed1c24}
-.auth-brand-panel:before{content:"";position:absolute;left:-80px;top:-90px;width:210px;height:210px;border-radius:50%;background:#ed1c24;opacity:.16}
 .brand-mark{background:#ed1c24;color:#fff}
 .brand span{color:#ed1c24}
 .cart-top b{background:#ed1c24;color:#fff}
@@ -774,12 +776,6 @@ tr:last-child td {
   min-height: 0;
   gap: 24px;
 }
-.auth-brand-panel {
-  gap: 20px;
-}
-.auth-welcome {
-  margin-top: 0;
-}
 .modal {
   max-height: 100%;
   overscroll-behavior: contain;
@@ -816,9 +812,8 @@ body:has(.modal-backdrop.open) {
     --bottom-nav-space: calc(64px + env(safe-area-inset-bottom, 0px));
   }
   .auth-screen { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
-  .auth-brand-panel { display: block; padding: 12px 22px; }
-  .auth-brand-top .auth-logo { width: min(155px, 100%); margin-inline: auto; }
-  .auth-welcome, .auth-showcase { display: none; }
+  .auth-brand-panel { gap: 8px; padding: 12px 22px; }
+  .auth-logo { width: min(155px, 100%); }
   .app-header {
     position: sticky;
     top: 0;
@@ -921,7 +916,7 @@ body:has(.modal-backdrop.open) {
   .site-logo { max-height: 44px; }
   .basket-nav { padding-block: 4px calc(4px + env(safe-area-inset-bottom, 0px)); }
   .auth-brand-panel { padding-block: 6px; }
-  .auth-brand-top .auth-logo { max-height: 44px; }
+  .auth-logo { max-height: 44px; }
   .auth-main { gap: 12px; padding-block: 14px; }
   .modal-backdrop { padding: 8px; }
 }
